@@ -1,4 +1,6 @@
 import axios from 'axios'
+import apiURL from '../http/apiUrl'
+
 const allData = {
     totalRegister: 44,
     totalActiver: 32,
@@ -6,12 +8,15 @@ const allData = {
     todayLogin: 11
 }
 
-export function getAll() {
-    return new Promise((resolve, reject) => {
-        // axios.get('https://swapi.co/api/people/1/')
-        //     .then(res => {
-        //         resolve(allData)
-        //     }).catch(reject)
-        setTimeout(resolve, 1000, allData)
-    })
+export default {
+    getAll() {
+        return new Promise((resolve, reject) => {
+            axios.get(apiURL.test)
+                .then(res => {
+                    console.log(res);
+                    resolve(allData)
+                }).catch(reject)
+            setTimeout(resolve, 1000, allData)
+        })
+    }
 }

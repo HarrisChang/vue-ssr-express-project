@@ -1,21 +1,25 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import actions from './actions'
-import mutations from './mutations'
-import getters from './getters'
+import createLogger from 'vuex/dist/logger'
+// import homeModule from './modules/home'
+// import actions from './actions'
+// import mutations from './mutations'
+// import getters from './getters'
 
 Vue.use(Vuex)
 
+const debug = process.env.NODE_ENV !== 'production'
+const plugins = debug ? [createLogger({})] : []
+
 export function createStore() {
   return new Vuex.Store({
-    state: {
-      totalRegister: 0,
-      totalActiver: 0,
-      topMouthActiver: 0,
-      todayLogin: 0
-    },
-    actions,
-    mutations,
-    getters
+    state: {},
+    mutations: {},
+    actions: {},
+    // strict: debug,
+    // plugins,
+    modules: {
+      // home: homeModule
+    }
   })
 } 

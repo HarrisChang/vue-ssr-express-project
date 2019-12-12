@@ -13,23 +13,33 @@
 
 <script>
 // @ is an alias to /src
-import { mapGetters } from 'vuex'
+import { mapState } from 'vuex'
+import homeModule from '../store/modules/home'
 export default {
-  asyncData ({ store, route }) {
-    return store.dispatch('getAllData')
+  asyncData ({ store }) {
+    store.registerModule('home', homeModule)
+    return store.dispatch('home/getAllData')
   },
   name: 'home',
   computed: {
-    ...mapGetters([
-      'totalRegister',
-      'topMouthActiver'
-    ]),
+    ...mapState({
+      totalRegister: state => state.home.totalRegister,
+      topMouthActiver: state => state.home.topMouthActiver
+    }),
     totalActiver() {
-      return this.$store.getters.totalActiver
+      return this.$store.state.home.totalActiver
     },
     todayLogin() {
-      return this.$store.getters.todayLogin
+      return this.$store.state.home.todayLogin
     }
-  }
+  },
+  mounted() {
+    // this.$http.get('https://swapi.co/api/people/1/').then(res => {
+    //   debugger
+    // })
+  },
+  destroyed () {
+    this.$store.unregisterModule('home')
+  },
 }
 </script>
