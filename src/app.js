@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
+import './plugins/element'
+import 'element-ui/lib/theme-chalk/index.css';
 import { createRouter } from './router'
 import { createStore } from './store'
 import { sync } from 'vuex-router-sync'

@@ -8,9 +8,10 @@ const allData = {
 
 export function getAll() {
     return new Promise((resolve, reject) => {
-        axios.get('https://swapi.co/api/people/1/')
-            .then(res => {
-                resolve(allData)
-            }).catch(reject)
+        // axios.get('https://swapi.co/api/people/1/')
+        //     .then(res => {
+        //         resolve(allData)
+        //     }).catch(reject)
+        setTimeout(resolve, 1000, allData)
     })
 }

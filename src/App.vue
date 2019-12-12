@@ -5,6 +5,7 @@
       <router-link to="/about">About</router-link>
     </div>
     这是APP22.vue文件
+    <el-button>click button</el-button>
     <router-view/>
   </div>
 </template>

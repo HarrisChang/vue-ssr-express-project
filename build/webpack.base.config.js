@@ -45,7 +45,7 @@ module.exports = {
                 }
             },
             {
-                test: /\.less?$/,
+                test: /\.(less|css)?$/,
                 use: isProd
                     ? ExtractTextPlugin.extract({
                         use: [
@@ -59,6 +59,10 @@ module.exports = {
                     })
                     : ['vue-style-loader', 'css-loader', 'less-loader']
             },
+            {
+                test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
+                loader: 'file-loader'
+            }
         ]
     },
     performance: {
